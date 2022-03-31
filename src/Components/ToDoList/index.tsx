@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ToDoForm from "./ToDoForm";
 import ToDoItem from "./ToDoItem";
 
 export interface List {
@@ -29,8 +30,12 @@ export default function ToDoList(){
         toDo: "Terminer l'exercice",
         isDone: true,
     }]);
-    return (
+    return (<>
     <div className="List">
+        <div className="Form">
+            <ToDoForm/>    
+        </div>
         {lists?.map((l) => <ToDoItem key={l.id} list= {l}/>)}
-    </div>)
+    </div>
+    </>)
 }
