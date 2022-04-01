@@ -1,19 +1,14 @@
-import React from "react";
-import { List } from "..";
+import { Todo } from "../../../core/model/todo";
 
-interface ToDoProps {
-    list : List;
+interface TodoItemProps {
+    todo: Todo;
+    clickHandler?: () => void;
 }
-export default function ToDoItem(props: ToDoProps){
-    return (
-    <div className="Item">
-        <p>Id: {props.list.id}</p>
-        <p>Chose à faire: {props.list.toDo}</p>
-        <p>{
-            props.list.isDone ?
-            <p>Terminer</p>
-                :
-            <p>A faire</p>
-            }</p>
-    </div>)
+
+export default function TodoItem(props: TodoItemProps) {
+    return (<div className={`todoItem ${props.todo.done ? 'done' : 'not-done'}`}>
+        <div>{props.todo.id}</div>
+        <div>{props.todo.description}</div>
+        <div><button style={{width: "7rem"}} onClick={props.clickHandler}>{props.todo.done ? "Mark as undone" : "Mark as done"}</button></div>
+    </div>);
 }
